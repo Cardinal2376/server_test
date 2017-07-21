@@ -1,0 +1,18 @@
+{
+  "name": "server_test",
+  "version": "1.0.0",
+  "description": "Nodejs Server Test",
+  "main": "index.js",
+  "dependencies": {
+    "crypto": "^0.0.3",
+    "formidable": "^1.1.1",
+    "request": "^2.81.0",
+    "silly-datetime": "^0.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cardinal",
+  "license": "MIT"
+}
