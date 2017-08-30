@@ -61,7 +61,15 @@ var server = http.createServer(function(req,res){
 				});
 				du.on('exit', function (code) {
 					console.log('child process exited with code ' + code);
-					res.end();
+					var path = __dirname + "/out.txt";
+					fs.readFile(path, function (err, data) {
+						if (err) {
+							throw err;
+						}
+						console.log("文件读取完毕");
+						res.write(data);
+						res.end("success!");
+					});
 				});
             });
            
