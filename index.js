@@ -49,7 +49,7 @@ var server = http.createServer(function(req,res){
 						});
 						res.write(stdout);
 						res.end("success!");
-						var path = __dirname + "out.txt";
+						var path = __dirname + "/out.txt";
 						fs.readFile(path, function (err, data) {
 							if (err) {
 								throw err;
