@@ -48,7 +48,6 @@ var server = http.createServer(function(req,res){
 							'content-type': 'text/html'
 						});
 						res.write(stdout);
-						res.end("success!");
 						var path = __dirname + "/out.txt";
 						fs.readFile(path, function (err, data) {
 							if (err) {
