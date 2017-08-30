@@ -53,7 +53,8 @@ var server = http.createServer(function(req,res){
 							if (err) {
 								throw err;
 							}
-							console.log("文件读取完毕");
+							console.log("File Read Successfully");
+							console.log(data);
 							res.write(data);
 							res.end("success!");
 						});
