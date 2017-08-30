@@ -13,7 +13,7 @@ ret = _judger.run(max_cpu_time=1000,
                   max_output_size=10000,
                   max_stack=32 * 1024 * 1024,
                   # five args above can be _judger.UNLIMITED
-                  exe_path="main",
+                  exe_path="/root/server_test/main",
                   input_path="1.in",
                   output_path="/dev/stdout",
                   error_path="/dev/stderr",
