@@ -37,7 +37,7 @@ var server = http.createServer(function(req,res){
                if(err) throw err;
                 console.log('file has been saved!');
 				var exec = require('child_process').exec;
-				var cmdStr = 'python ' + __dirname + 'demo.py';
+				var cmdStr = 'python ' + __dirname + '/demo.py';
 				console.log(cmdStr);
 				exec(cmdStr, function (err, stdout, stderr) {
 					if (err) {
@@ -49,7 +49,6 @@ var server = http.createServer(function(req,res){
 						});
 						res.write(stdout);
 						res.end("success!");
-						/*
 						var path = __dirname + "out.txt";
 						fs.readFile(path, function (err, data) {
 							if (err) {
@@ -59,7 +58,6 @@ var server = http.createServer(function(req,res){
 							res.write(data);
 							res.end("success!");
 						});
-						*/
 					}
 				});
             });
