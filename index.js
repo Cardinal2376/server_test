@@ -36,7 +36,9 @@ var server = http.createServer(function(req,res){
             fs.writeFile(newpath, fields.code, 'utf8', function(err) {
                if(err) throw err;
                 console.log('file has been saved!');
+				/*
 				var exec = require('child_process').exec;
+				
 				var cmdStr = 'python ' + __dirname + '/demo.py';
 				console.log(cmdStr);
 				exec(cmdStr, function (err, stdout, stderr) {
@@ -44,21 +46,22 @@ var server = http.createServer(function(req,res){
 						console.log('error:' + stderr);
 					} else {
 						console.log(stdout);
-						res.writeHead(200, {
-							'content-type': 'text/html'
-						});
-						res.write(stdout);
-						var path = __dirname + "/out.txt";
-						fs.readFile(path, function (err, data) {
-							if (err) {
-								throw err;
-							}
-							console.log("File Read Successfully");
-							console.log(data);
-							res.write(data);
-							res.end("success!");
-						});
+						
 					}
+				});
+				*/
+				var child = require('child_process');
+				var du = child.spawn('python', [__dirname + '/demo.py']);
+				du.stdout.on('data', function (data) {
+					console.log('stdout: ' + data);
+					res.write(data);
+				});
+				du.stderr.on('data', function (data) {
+					console.log('stderr: ' + data);
+				});
+				du.on('exit', function (code) {
+					console.log('child process exited with code ' + code);
+					res.end();
 				});
             });
            
