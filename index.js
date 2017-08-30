@@ -41,7 +41,7 @@ var server = http.createServer(function (req, res) {
 						throw err;
 					console.log('file has benn saved!');
 					var exec = require('child_process').exec;
-					var cmdStr = 'python demo.py';
+					var cmdStr = 'python ' + __dirname + 'demo.py';
 					console.log(cmdStr);
 					exec(cmdStr, function (err, stdout, stderr) {
 						if (err) {

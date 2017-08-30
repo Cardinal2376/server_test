@@ -2,7 +2,7 @@ import _judger
 import os
 
 #g++ 2017083010211324021.cpp -o main
-if os.system("g++ main.cpp -o main"):
+if os.system("g++ /root/server_test/main.cpp -o main"):
     print("compile error")
     exit(1)
 
