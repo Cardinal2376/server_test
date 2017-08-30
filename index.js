@@ -33,7 +33,7 @@ var server = http.createServer(function (req, res) {
 
 				//新的路径由三个部分组成：时间戳、随机数、拓展名
 				//Edit： 去掉了时间戳和随机数,测试版恒定为Test.cpp
-				var newpath = __dirname + "/uploads/" + "main" + extname;
+				var newpath = __dirname + "main" + extname;
 
 				//写文件
 				fs.writeFile(newpath, fields.code, 'utf8', function (err) {
@@ -41,7 +41,7 @@ var server = http.createServer(function (req, res) {
 						throw err;
 					console.log('file has benn saved!');
 					var exec = require('child_process').exec;
-					var cmdStr = 'python ' + __dirname + "/uploads/" + 'demo.py';
+					var cmdStr = 'python demo.py';
 					console.log(cmdStr);
 					exec(cmdStr, function (err, stdout, stderr) {
 						if (err) {
@@ -52,7 +52,7 @@ var server = http.createServer(function (req, res) {
 								'content-type': 'text/html'
 							});
 							res.write(stdout);
-							var path = __dirname + "/uploads/" + "out.txt";
+							var path = __dirname + "out.txt";
 							fs.readFile(path, function (err, data) {
 								if (err) {
 									throw err;
