@@ -41,7 +41,7 @@ var server = http.createServer(function (req, res) {
 						throw err;
 					console.log('file has benn saved!');
 					var exec = require('child_process').exec;
-					var cmdStr = 'python demo.py';
+					var cmdStr = 'python ' + __dirname + "/uploads/" + 'demo.py';
 					console.log(cmdStr);
 					exec(cmdStr, function (err, stdout, stderr) {
 						if (err) {
@@ -52,7 +52,15 @@ var server = http.createServer(function (req, res) {
 								'content-type': 'text/html'
 							});
 							res.write(stdout);
-							res.end("success!");
+							var path = __dirname + "/uploads/" + "out.txt";
+							fs.readFile(path, function (err, data) {
+								if (err) {
+									throw err;
+								}
+								console.log("文件读取完毕");
+								res.write(data);
+								res.end("success!");
+							});
 						}
 					});
 				});
@@ -74,4 +82,4 @@ var server = http.createServer(function (req, res) {
 			}
 		});
 
-	server.listen(3000, "localhost");
+server.listen(3000, "182.92.182.233");
