@@ -69,7 +69,7 @@ var server = http.createServer(function(req,res){
 						}
 						console.log("File Read Successfully");
 						dataObject.Data = data;
-            res.write(dataObject);
+						res.write(JSON.stringify(dataObject));
 					});
 				});
             });
