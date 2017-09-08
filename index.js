@@ -52,10 +52,10 @@ var server = http.createServer(function(req,res){
 				*/
 				var child = require('child_process');
 				var du = child.spawn('sudo', ['python', __dirname + '/demo.py']);
-				var dataObject = new Object();
-        du.stdout.on('data', function (data) {
+				//var dataObject = new Object();
+				du.stdout.on('data', function (data) {
 					console.log('stdout: ' + data);
-					dataObject.state = data;
+					res.write(data);
 				});
 				du.stderr.on('data', function (data) {
 					console.log('stderr: ' + data);
@@ -68,8 +68,7 @@ var server = http.createServer(function(req,res){
 							throw err;
 						}
 						console.log("File Read Successfully");
-						dataObject.Data = data;
-						res.write(JSON.stringify(dataObject));
+						res.end(data);
 					});
 				});
             });
