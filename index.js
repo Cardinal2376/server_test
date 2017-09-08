@@ -55,7 +55,7 @@ var server = http.createServer(function(req,res){
 				var dataObject;
         du.stdout.on('data', function (data) {
 					console.log('stdout: ' + data);
-					dataObject["state"] = data;
+					dataObject.state = data;
 				});
 				du.stderr.on('data', function (data) {
 					console.log('stderr: ' + data);
@@ -68,7 +68,7 @@ var server = http.createServer(function(req,res){
 							throw err;
 						}
 						console.log("File Read Successfully");
-						dataObject["Data"] = data;
+						dataObject.Data = data;
             res.write(dataObject);
 					});
 				});
