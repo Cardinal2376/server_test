@@ -30,7 +30,7 @@ var server = http.createServer(function(req,res){
             var extname = "." + fields.lang;
 			
             //新的路径由三个部分组成：时间戳、随机数、拓展名
-            var newpath = __dirname + "/uploads/main.cpp";
+            var newpath = __dirname + "/main.cpp";
 
             //写文件
             fs.writeFile(newpath, fields.code, 'utf8', function(err) {
