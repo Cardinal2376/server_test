@@ -77,7 +77,8 @@ var server = http.createServer(function(req,res){
 							result.data = data;
 						});
 					}
-					res.end(result);
+					console.log(result);
+					res.end(JSON.stringify(result));
 				});
             });
            
