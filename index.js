@@ -56,7 +56,7 @@ var server = http.createServer(function(req,res){
 				var state;
 				du.stdout.on('data', function (data) {
 					console.log('stdout: ' + data);
-					state = eval('(' + data + ')');;
+					state = eval('(' + data + ')');
 					//res.write(data);
 				});
 				du.stderr.on('data', function (data) {
@@ -74,7 +74,7 @@ var server = http.createServer(function(req,res){
 								throw err;
 							}
 							console.log("File Read Successfully");
-							result.data = data;
+							result.data = eval('(' + data + ')');
 							console.log(result);
 							res.end(JSON.stringify(result));
 						});
