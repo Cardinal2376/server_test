@@ -53,23 +53,31 @@ var server = http.createServer(function(req,res){
 				var child = require('child_process');
 				var du = child.spawn('sudo', ['python', 'run.py', 'main.cpp', 'out.txt', 'g++']);
 				//var dataObject = new Object();
+				var state;
 				du.stdout.on('data', function (data) {
 					console.log('stdout: ' + data);
-					res.write(data);
+					state = data;
+					//res.write(data);
 				});
 				du.stderr.on('data', function (data) {
 					console.log('stderr: ' + data);
 				});
 				du.on('exit', function (code) {
 					console.log('child process exited with code ' + code);
-					var path = __dirname + "/out.txt";
-					fs.readFile(path, function (err, data) {
-						if (err) {
-							throw err;
-						}
-						console.log("File Read Successfully");
-						res.end(data);
-					});
+					var result = new Object();
+					result.signal = state.signal;
+					result.error = state.error;
+					if(state.signal == 0) {
+						var path = __dirname + "/out.txt";
+						fs.readFile(path, function (err, data) {
+							if (err) {
+								throw err;
+							}
+							console.log("File Read Successfully");
+							result.data = data;
+						});
+					}
+					res.end(result);
 				});
             });
            
@@ -85,5 +93,5 @@ var server = http.createServer(function(req,res){
         res.end("404");
     }
 });
-
-server.listen(3000,"182.92.182.233");
+server.listen(3000,"localhost");
+//server.listen(3000,"182.92.182.233");
