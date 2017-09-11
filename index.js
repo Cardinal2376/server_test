@@ -74,7 +74,8 @@ var server = http.createServer(function(req,res){
 								throw err;
 							}
 							console.log("File Read Successfully");
-							result.data = eval('(' + data + ')');
+							result.data = "";
+							result.data += data;
 							console.log(result);
 							res.end(JSON.stringify(result));
 						});
