@@ -22,7 +22,7 @@ language_map = {
 if language == "java":
     cmd = language_map[language] + " " + input_file
 else:
-    cmd = language_map[language] + " " + input_file + " -o " + exe_file
+    cmd = language_map[language] + " json_reader.cpp json_value.cpp json_write.cpp " + input_file + " -o " + exe_file
 
 p = subprocess.Popen(cmd, shell=True, cwd=os.getcwd(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 out, err = p.communicate()# 获取编译错误信息
