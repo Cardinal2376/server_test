@@ -51,7 +51,7 @@ var server = http.createServer(function(req,res){
 				});
 				*/
 				var child = require('child_process');
-				var du = child.spawn('sudo', ['python', __dirname + '/demo.py']);
+				var du = child.spawn('sudo', ['python', 'run.py', 'main.cpp', 'out.txt', 'g++']);
 				//var dataObject = new Object();
 				du.stdout.on('data', function (data) {
 					console.log('stdout: ' + data);
