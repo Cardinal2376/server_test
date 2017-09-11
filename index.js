@@ -13,6 +13,7 @@ var path = require("path");
 var server = http.createServer(function(req,res){
     //如果你的访问地址是这个，并且请求类型是post
     if(req.url == "/dopost" && req.method.toLowerCase() == "post"){
+		res.setHeader('Access-Control-Allow-Origin', '*');
         //Creates a new incoming form.
         var form = new formidable.IncomingForm();
         //设置文件上传存放地址
@@ -90,11 +91,13 @@ var server = http.createServer(function(req,res){
         });
     }else if(req.url == "/"){
         //呈递form.html页面
+		res.setHeader('Access-Control-Allow-Origin', '*');
         fs.readFile("./form.html",function(err,data){
             res.writeHead(200, {'content-type': 'text/html'});
             res.end(data);
         })
     }else{
+		res.setHeader('Access-Control-Allow-Origin', '*');
         res.writeHead(404, {'content-type': 'text/html'});
         res.end("404");
     }
