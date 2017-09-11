@@ -75,10 +75,14 @@ var server = http.createServer(function(req,res){
 							}
 							console.log("File Read Successfully");
 							result.data = data;
+							console.log(result);
+							res.end(JSON.stringify(result));
 						});
+					} else {
+						console.log(result);
+						res.end(JSON.stringify(result));
 					}
-					console.log(result);
-					res.end(JSON.stringify(result));
+					
 				});
             });
            
