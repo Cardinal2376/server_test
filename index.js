@@ -56,7 +56,7 @@ var server = http.createServer(function(req,res){
 				var state;
 				du.stdout.on('data', function (data) {
 					console.log('stdout: ' + data);
-					state = data;
+					state = eval('(' + data + ')');;
 					//res.write(data);
 				});
 				du.stderr.on('data', function (data) {
