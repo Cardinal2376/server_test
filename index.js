@@ -7,7 +7,7 @@ var util = require("util");
 var fs = require("fs");
 var sd = require("silly-datetime");
 var path = require("path");
-
+var url = require("url");
 
 //创建服务器
 var server = http.createServer(function(req,res){
@@ -28,11 +28,10 @@ var server = http.createServer(function(req,res){
             //时间，使用了第三方模块，silly-datetime
             var ttt = sd.format(new Date(), 'YYYYMMDDHHmmss');
             var ran = parseInt(Math.random() * 89999 + 10000);
-            var extname = "." + fields.lang;
 			
             //新的路径由三个部分组成：时间戳、随机数、拓展名
-            var newpath = __dirname + "/main.cpp";
-
+            var newpath = __dirname + "/" + ttt + ran + ".cpp";
+			var outpath = __dirname + "/" + ttt + ran + "out.cpp"
             //写文件
             fs.writeFile(newpath, fields.code, 'utf8', function(err) {
                if(err) throw err;
@@ -51,8 +50,10 @@ var server = http.createServer(function(req,res){
 					}
 				});
 				*/
+				
+				/*
 				var child = require('child_process');
-				var du = child.spawn('sudo', ['python', 'run.py', 'main.cpp', 'out.txt', 'g++']);
+				var du = child.spawn('sudo', ['python', 'run.py', newpath, outpath, 'g++']);
 				//var dataObject = new Object();
 				var state;
 				du.stdout.on('data', function (data) {
@@ -69,7 +70,7 @@ var server = http.createServer(function(req,res){
 					result.signal = state.signal;
 					result.error = state.error;
 					if(state.signal == 0) {
-						var path = __dirname + "/out.txt";
+						var path = outpath;
 						fs.readFile(path, function (err, data) {
 							if (err) {
 								throw err;
@@ -86,21 +87,57 @@ var server = http.createServer(function(req,res){
 					}
 					
 				});
+				*/
+				res.end("wtf");
             });
            
         });
+    }else if(req.url == "/post" && req.method.toLowerCase() == "post"){
+		//res.setHeader('Access-Control-Allow-Origin', '*');
+		res.writeHead(200, {"Content-type":"text/html;charset=UTF-8","Access-Control-Allow-Origin":"*"});
+		var alldata = "";
+		
+        req.addListener("data",function(chunk){
+            alldata += chunk;
+        });
+        
+        req.addListener("end",function(){
+			console.log(alldata);
+			var ttt = sd.format(new Date(), 'YYYYMMDDHHmmss');
+			var ran = parseInt(Math.random() * 89999 + 10000);
+			var newpath = __dirname + "/static/" + ttt + ran + ".json";
+			fs.writeFile(newpath, alldata, 'utf8', function(err) {
+			   if(err) throw err;
+				console.log('file has been saved!');
+				var str = ttt + ran;
+				res.end(str);
+			});
+        });
+
+       
     }else if(req.url == "/"){
-        //呈递form.html页面
+		//呈递form.html页面
 		res.setHeader('Access-Control-Allow-Origin', '*');
         fs.readFile("./form.html",function(err,data){
             res.writeHead(200, {'content-type': 'text/html'});
             res.end(data);
         })
-    }else{
+    } else {
 		res.setHeader('Access-Control-Allow-Origin', '*');
-        res.writeHead(404, {'content-type': 'text/html'});
-        res.end("404");
-    }
+		var pathname = url.parse(req.url).pathname;
+		fs.readFile("./static/" + pathname + ".json",function(err,data){
+			if(err){
+				//如果此文件不存在，就应该用404返回
+				fs.readFile("./static/404.html",function(err,data){
+					res.writeHead(404,{"Content-type":"text/html;charset=UTF8"});
+					res.end(data);
+				});
+				return;
+			};
+			res.writeHead(200,{"Content-type":"text/html"});
+			res.end(data);
+		});
+	}
 });
-//server.listen(3000,"localhost");
-server.listen(3000,"182.92.182.233");
+server.listen(3000,"localhost");
+//server.listen(3000,"182.92.182.233");

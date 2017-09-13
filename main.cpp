@@ -3,7 +3,7 @@
 int main()
 {
     //freopen("E:\\HTML5Learning\\test\\1.txt", "w", stdout);
-    int N = 10;
+    int N = 5;
     int A[100];
     for (int i = N; i >= 0; i--) {
         A[i] = 0;
