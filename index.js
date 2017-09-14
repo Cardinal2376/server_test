@@ -31,76 +31,59 @@ var server = http.createServer(function(req,res){
             //新的路径由三个部分组成：时间戳、随机数、拓展名
             var ext = "";
             var langstr = "";
+            if(fields.lang == "cpp") {
+              langstr = "g++";
+              ext = ".cpp";
+            }
+            else if(fields.lang == "python") {
+              langstr = "python";
+              ext = ".py";
+            }
             var newpath = __dirname + "/" + ttt + ran + ext;
-            var outpath = __dirname + "/" + ttt + ran + "out.cpp"
-				if(fields.lang == "cpp") {
-          langstr = "g++";
-          ext = ".cpp";
-        }
-        else if(fields.lang == "python") {
-          langstr = "python";
-          ext = ".py";
-          outpath = "out.txt";
-        }
+            var outpath = __dirname + "/" + ttt + ran + "out.txt";
+            
         
             //写文件
             fs.writeFile(newpath, fields.code, 'utf8', function(err) {
-               if(err) throw err;
+                if(err) throw err;
                 console.log('file has been saved!');
-				/*
-				var exec = require('child_process').exec;
-				
-				var cmdStr = 'python ' + __dirname + '/demo.py';
-				console.log(cmdStr);
-				exec(cmdStr, function (err, stdout, stderr) {
-					if (err) {
-						console.log('error:' + stderr);
-					} else {
-						console.log(stdout);
-						
-					}
-				});
-				*/
-				
-				var child = require('child_process');
-				var du = child.spawn('sudo', ['python', 'run.py', newpath, outpath, langstr]);
-				//var dataObject = new Object();
-				var state = "";
-				du.stdout.on('data', function (data) {
-					//console.log('stdout: ' + data);
-					state += data;
-				});
-				du.stderr.on('data', function (data) {
-					console.log('stderr: ' + data);
-				});
-				du.on('exit', function (code) {
-          console.log('stdout: ' + state);
-          state = eval('(' + state + ')');
-					console.log('child process exited with code ' + code);
-					var result = new Object();
-					result.signal = state.signal;
-					result.error = state.error;
-          result.data = state.output;
-					if(state.signal == 0 && fields.lang == "cpp") {
-						var path = outpath;
-						fs.readFile(path, function (err, data) {
-							if (err) {
-								throw err;
-							}
-							console.log("File Read Successfully");
-							result.data = "";
-							result.data += data;
-							console.log(result);
-							res.end(JSON.stringify(result));
-						});
-					} else {
-						console.log(result);
-						res.end(JSON.stringify(result));
-					}
-					
-				});
-				
-				
+                var child = require('child_process');
+                var du = child.spawn('sudo', ['python', 'run.py', newpath, outpath, langstr]);
+                //var dataObject = new Object();
+                var state = "";
+                du.stdout.on('data', function (data) {
+                  //console.log('stdout: ' + data);
+                  state += data;
+                });
+                du.stderr.on('data', function (data) {
+                  console.log('stderr: ' + data);
+                });
+                du.on('exit', function (code) {
+                  console.log('stdout: ' + state);
+                  state = eval('(' + state + ')');
+                  console.log('child process exited with code ' + code);
+                  var result = new Object();
+                  result.signal = state.signal;
+                  result.error = state.error;
+                  result.data = state.output;
+                  if(state.signal == 0 && fields.lang == "cpp") {
+                    var path = outpath;
+                    fs.readFile(path, function (err, data) {
+                      if (err) {
+                        throw err;
+                      }
+                      console.log("File Read Successfully");
+                      result.data = "";
+                      result.data += data;
+                      console.log(result);
+                      res.end(JSON.stringify(result));
+                    });
+                  } else {
+                    console.log(result);
+                    res.end(JSON.stringify(result));
+                  }
+                  
+                });
             });
            
         });
