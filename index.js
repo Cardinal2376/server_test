@@ -51,7 +51,7 @@ var server = http.createServer(function(req,res){
 				});
 				*/
 				
-				/*
+				
 				var child = require('child_process');
 				var du = child.spawn('sudo', ['python', 'run.py', newpath, outpath, 'g++']);
 				//var dataObject = new Object();
@@ -87,8 +87,8 @@ var server = http.createServer(function(req,res){
 					}
 					
 				});
-				*/
-				res.end("wtf");
+				
+				
             });
            
         });
@@ -139,5 +139,5 @@ var server = http.createServer(function(req,res){
 		});
 	}
 });
-server.listen(3000,"localhost");
-//server.listen(3000,"182.92.182.233");
+//server.listen(3000,"localhost");
+server.listen(3000,"182.92.182.233");

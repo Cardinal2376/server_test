@@ -33,11 +33,11 @@ if p.returncode:
     print(json.dumps(ce_meg).encode('utf-8'))
     exit(1)
 
-ret = _judger.run(max_cpu_time=1000,
-                  max_real_time=2000,
+ret = _judger.run(max_cpu_time=3000,
+                  max_real_time=6000,
                   max_memory= 1024 * 1024 * 1024,
                   max_process_number=200,
-                  max_output_size=10000,
+                  max_output_size=1000000,
                   max_stack=32 * 1024 * 1024,
                   # five args above can be _judger.UNLIMITED
                   exe_path=exe_file,
