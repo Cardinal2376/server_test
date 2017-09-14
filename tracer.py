@@ -204,7 +204,7 @@ class LogTracer(object):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "init", "Data": {"name": name}}
         tracerlist.append(JSONObject)
 
-    def print(self, info):
+    def Print(self, info):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "print", "Data": {"info": info}}
         tracerlist.append(JSONObject)
         return self
