@@ -29,8 +29,18 @@ var server = http.createServer(function(req,res){
             var ran = parseInt(Math.random() * 89999 + 10000);
 			
             //新的路径由三个部分组成：时间戳、随机数、拓展名
-            var newpath = __dirname + "/" + ttt + ran + ".cpp";
-			var outpath = __dirname + "/" + ttt + ran + "out.cpp"
+            var ext;
+            var langstr;
+				if(fields.lang == "cpp") {
+          langstr = "g++";
+          ext = ".cpp";
+        }
+        else if(fields.lang == "python") {
+          langstr = "python";
+          ext = ".py";
+        }
+        var newpath = __dirname + "/" + ttt + ran + ext;
+        var outpath = __dirname + "/" + ttt + ran + "out.cpp"
             //写文件
             fs.writeFile(newpath, fields.code, 'utf8', function(err) {
                if(err) throw err;
@@ -49,9 +59,7 @@ var server = http.createServer(function(req,res){
 					}
 				});
 				*/
-				var langstr;
-				if(fields.lang == "cpp") langstr = "g++";
-        else if(fields.lang == "python") langstr = "python";
+				
 				var child = require('child_process');
 				var du = child.spawn('sudo', ['python', 'run.py', newpath, outpath, langstr]);
 				//var dataObject = new Object();
