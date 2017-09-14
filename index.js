@@ -51,7 +51,7 @@ var server = http.createServer(function(req,res){
 				*/
 				var langstr;
 				if(fields.lang == "cpp") langstr = "g++";
-        else if(field.lang == "python") langstr = "python";
+        else if(fields.lang == "python") langstr = "python";
 				var child = require('child_process');
 				var du = child.spawn('sudo', ['python', 'run.py', newpath, outpath, langstr]);
 				//var dataObject = new Object();
