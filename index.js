@@ -29,8 +29,8 @@ var server = http.createServer(function(req,res){
             var ran = parseInt(Math.random() * 89999 + 10000);
 			
             //新的路径由三个部分组成：时间戳、随机数、拓展名
-            var ext;
-            var langstr;
+            var ext = "";
+            var langstr = "";
             var newpath = __dirname + "/" + ttt + ran + ext;
             var outpath = __dirname + "/" + ttt + ran + "out.cpp"
 				if(fields.lang == "cpp") {
