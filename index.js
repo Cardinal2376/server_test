@@ -8,7 +8,6 @@ var fs = require("fs");
 var sd = require("silly-datetime");
 var path = require("path");
 var url = require("url");
-
 //创建服务器
 var server = http.createServer(function(req,res){
     //如果你的访问地址是这个，并且请求类型是post
@@ -50,10 +49,11 @@ var server = http.createServer(function(req,res){
 					}
 				});
 				*/
-				
-				
+				var langstr;
+				if(fields.lang == "cpp") langstr = "g++";
+        else if(field.lang == "python") langstr = "python";
 				var child = require('child_process');
-				var du = child.spawn('sudo', ['python', 'run.py', newpath, outpath, 'g++']);
+				var du = child.spawn('sudo', ['python', 'run.py', newpath, outpath, langstr]);
 				//var dataObject = new Object();
 				var state;
 				du.stdout.on('data', function (data) {
@@ -69,7 +69,7 @@ var server = http.createServer(function(req,res){
 					var result = new Object();
 					result.signal = state.signal;
 					result.error = state.error;
-					if(state.signal == 0) {
+					if(state.signal == 0 || fields.lang == "cpp") {
 						var path = outpath;
 						fs.readFile(path, function (err, data) {
 							if (err) {

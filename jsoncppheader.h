@@ -637,14 +637,15 @@ public:
 		return *this;
 	}
 
-	DirectedGraphTracer& _setTreeData(int *D, int n, int m) {
+	DirectedGraphTracer& _setTreeData(int *D, int n, int m, int root) {
 		JSONObeject["Event"] = Json::Value("setTreeData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
             for(int j = 0; j < m; j++) {
-                tmp[i][j] = D[i * n + j];
+                tmp["Data"][i][j] = D[i * n + j];
             }
 		}
+    tmp["root"] = root;
 		JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
