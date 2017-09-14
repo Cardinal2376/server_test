@@ -69,7 +69,7 @@ var server = http.createServer(function(req,res){
 					var result = new Object();
 					result.signal = state.signal;
 					result.error = state.error;
-					if(state.signal == 0 || fields.lang == "cpp") {
+					if(state.signal == 0 && fields.lang == "cpp") {
 						var path = outpath;
 						fs.readFile(path, function (err, data) {
 							if (err) {
