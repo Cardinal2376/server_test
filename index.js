@@ -65,7 +65,7 @@ var server = http.createServer(function(req,res){
 				var child = require('child_process');
 				var du = child.spawn('sudo', ['python', 'run.py', newpath, outpath, langstr]);
 				//var dataObject = new Object();
-				var state;
+				var state = "";
 				du.stdout.on('data', function (data) {
 					//console.log('stdout: ' + data);
 					state += data;
