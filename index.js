@@ -95,7 +95,7 @@ var server = http.createServer(function(req,res){
 						});
 					} else {
 						console.log(result);
-						res.end(result);
+						res.end(JSON.stringify(result));
 					}
 					
 				});
