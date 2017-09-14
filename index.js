@@ -31,6 +31,8 @@ var server = http.createServer(function(req,res){
             //新的路径由三个部分组成：时间戳、随机数、拓展名
             var ext;
             var langstr;
+            var newpath = __dirname + "/" + ttt + ran + ext;
+            var outpath = __dirname + "/" + ttt + ran + "out.cpp"
 				if(fields.lang == "cpp") {
           langstr = "g++";
           ext = ".cpp";
@@ -38,9 +40,9 @@ var server = http.createServer(function(req,res){
         else if(fields.lang == "python") {
           langstr = "python";
           ext = ".py";
+          outpath = "out.txt";
         }
-        var newpath = __dirname + "/" + ttt + ran + ext;
-        var outpath = __dirname + "/" + ttt + ran + "out.cpp"
+        
             //写文件
             fs.writeFile(newpath, fields.code, 'utf8', function(err) {
                if(err) throw err;
@@ -65,14 +67,15 @@ var server = http.createServer(function(req,res){
 				//var dataObject = new Object();
 				var state;
 				du.stdout.on('data', function (data) {
-					console.log('stdout: ' + data);
-					state = eval('(' + data + ')');
-					//res.write(data);
+					//console.log('stdout: ' + data);
+					state += data;
 				});
 				du.stderr.on('data', function (data) {
 					console.log('stderr: ' + data);
 				});
 				du.on('exit', function (code) {
+          console.log('stdout: ' + state);
+          state = eval('(' + state + ')');
 					console.log('child process exited with code ' + code);
 					var result = new Object();
 					result.signal = state.signal;
