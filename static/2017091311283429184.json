@@ -1,1 +1,0 @@
-{"lang":"cpp","code":"#include <iostream>\r\n#include <algorithm>\r\n#include <cstdio>\r\n#include <string>\r\n#include <cstring>\r\n#include <cmath>\r\n\r\nusing namespace std;\r\nconst int INF = 0x3f3f3f3f;\r\nconst double eps = 1e-8;\r\nconst int  MAXN = 1e5 + 5;\r\ntypedef long long LL;\r\n\r\nint main() {\r\n\t\r\n\tcout << \"hello\" << endl;\r\n\treturn 0;\r\n}\r\n\t\t\t"}
