@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+import json
+
 class TracerList(object):
     def __init__(self):
         self.TracerCount = 0
@@ -12,9 +14,10 @@ class TracerList(object):
         self.mylist.append(value)
     def info(self):
         #fp = open("sort.txt", "w")
-        for var in self.mylist:
+        #for var in self.mylist:
             #fp.write(str(var))
-            print(var)
+           # print(var)
+	print(json.dumps(self.mylist))
 tracerlist = TracerList()
 
 class Array2DTracer(object):
