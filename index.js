@@ -66,6 +66,7 @@ var server = http.createServer(function(req,res){
                   result.signal = state.signal;
                   result.error = state.error;
                   result.data = state.output;
+                  result.result = state.result;
                   if(state.signal == 0 && fields.lang == "cpp") {
                     var path = outpath;
                     fs.readFile(path, function (err, data) {
