@@ -48,7 +48,7 @@ var server = http.createServer(function(req,res){
                 if(err) throw err;
                 console.log('file has been saved!');
                 var child = require('child_process');
-                var du = child.spawn('sudo', ['python', '/uploads/run.py', newpath, outpath, langstr]);
+                var du = child.spawn('sudo', ['python', './uploads/run.py', newpath, outpath, langstr]);
                 //var dataObject = new Object();
                 var state = "";
                 du.stdout.on('data', function (data) {
