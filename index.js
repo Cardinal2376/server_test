@@ -39,8 +39,8 @@ var server = http.createServer(function(req,res){
               langstr = "python";
               ext = ".py";
             }
-            var newpath = __dirname + "/" + ttt + ran + ext;
-            var outpath = __dirname + "/" + ttt + ran + "out.txt";
+            var newpath = __dirname + "/uploads/" + ttt + ran + ext;
+            var outpath = __dirname + "/uploads/" + ttt + ran + "out.txt";
             
         
             //Ð´ÎÄ¼þ
