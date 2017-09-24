@@ -47,12 +47,12 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& _setData(int *D, int n, int m) {
+	Array2DTracer& _setData(int *D, int len, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
             for(int j = 0; j < m; j++) {
-                tmp[i].append(D[i * n + j]);
+                tmp[i].append(D[i * len + j]);
             }
 		}
 		JSONObeject["Data"] = tmp;
@@ -60,12 +60,12 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& _setData(char *D, int n, int m) {
+	Array2DTracer& _setData(char *D, int len, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
             for(int j = 0; j < m; j++) {
-                tmp[i].append(D[i * n + j]);
+                tmp[i].append(D[i * len + j]);
             }
 		}
 		JSONObeject["Data"] = tmp;
@@ -624,12 +624,12 @@ public:
 		return *this;
 	}
 
-	DirectedGraphTracer& _setData(int *D, int n, int m) {
+	DirectedGraphTracer& _setData(int *D, int len, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
             for(int j = 0; j < m; j++) {
-                tmp[i][j] = D[i * n + j];
+                tmp[i][j] = D[i * len + j];
             }
 		}
 		JSONObeject["Data"] = tmp;
@@ -726,12 +726,12 @@ public:
 		return *this;
 	}
 
-	UndirectedGraphTracer& _setData(int *D, int n, int m) {
+	UndirectedGraphTracer& _setData(int *D, int len, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
             for(int j = 0; j < m; j++) {
-                tmp[i][j] = D[i * n + j];
+                tmp[i][j] = D[i * len + j];
             }
 		}
 		JSONObeject["Data"] = tmp;
@@ -826,12 +826,12 @@ public:
 		return *this;
 	}
 
-	WeightedDirectedGraphTracer& _setData(int *D, int n, int m) {
+	WeightedDirectedGraphTracer& _setData(int *D, int len, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
             for(int j = 0; j < m; j++) {
-                tmp[i][j] = D[i * n + j];
+                tmp[i][j] = D[i * len + j];
             }
 		}
 		JSONObeject["Data"] = tmp;
@@ -937,12 +937,12 @@ public:
 		return *this;
 	}
 
-	WeightedUndirectedGraphTracer& _setData(int *D, int n, int m) {
+	WeightedUndirectedGraphTracer& _setData(int *D, int len, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
             for(int j = 0; j < m; j++) {
-                tmp[i][j] = D[i * n + j];
+                tmp[i][j] = D[i * len + j];
             }
 		}
 		JSONObeject["Data"] = tmp;
