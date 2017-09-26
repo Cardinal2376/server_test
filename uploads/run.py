@@ -17,7 +17,7 @@ language_map = {
     "gcc"  : "gcc",
     "g++"  : "g++",
     "java" : "javac",
-    "python": "python",
+    "python": "python3",
 }
 
 if language == "java" or language == "python":
