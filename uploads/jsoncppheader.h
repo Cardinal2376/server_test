@@ -65,7 +65,9 @@ public:
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
             for(int j = 0; j < m; j++) {
-                tmp[i].append(D[i * len + j]);
+                string s = "";
+                s += D[i * len + j];
+                tmp[i].append(s);
             }
 		}
 		JSONObeject["Data"] = tmp;
@@ -308,7 +310,9 @@ public:
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
-            tmp.append(D[i]);
+            string s = "";
+            s += D[i];
+            tmp.append(s);
 		}
 		JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
@@ -515,7 +519,9 @@ public:
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
-            tmp.append(D[i]);
+            string s = "";
+            s += D[i];
+            tmp.append(s);
 		}
 		JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
