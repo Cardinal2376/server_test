@@ -36,18 +36,18 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    Array2DTracer& palette(string selected, string notified, string default) {
+    Array2DTracer& palette(string _selected, string _notified, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
-        tmp.append(Json::Value(selected));
-        tmp.append(Json::Value(notified));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_selected));
+        tmp.append(Json::Value(_notified));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
 	}
 
-	Array2DTracer& setData(int *D, int len, int n, int m) {
+	Array2DTracer& _setData(int *D, int len, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -60,7 +60,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& setData(char *D, int len, int n, int m) {
+	Array2DTracer& _setData(char *D, int len, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -73,7 +73,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& notify(int x, int y, int v) {
+	Array2DTracer& _notify(int x, int y, int v) {
 		JSONObeject["Event"] = Json::Value("notify");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -84,7 +84,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& denotify(int x, int y) {
+	Array2DTracer& _denotify(int x, int y) {
 		JSONObeject["Event"] = Json::Value("denotify");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -94,7 +94,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& select(int sx, int sy, int ex, int ey) {
+	Array2DTracer& _select(int sx, int sy, int ex, int ey) {
 		JSONObeject["Event"] = Json::Value("selectRT");
 		Json::Value tmp;
 		tmp["sx"] = Json::Value(sx);
@@ -106,7 +106,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& select(int x, int y) {
+	Array2DTracer& _select(int x, int y) {
 		JSONObeject["Event"] = Json::Value("select");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -116,7 +116,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& selectRow(int x, int sy, int ey) {
+	Array2DTracer& _selectRow(int x, int sy, int ey) {
 		JSONObeject["Event"] = Json::Value("selectRow");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -127,7 +127,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& selectCol(int y, int sx, int ex) {
+	Array2DTracer& _selectCol(int y, int sx, int ex) {
 		JSONObeject["Event"] = Json::Value("selectCol");
 		Json::Value tmp;
 		tmp["y"] = Json::Value(y);
@@ -138,7 +138,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& deselect(int sx, int sy, int ex, int ey) {
+	Array2DTracer& _deselect(int sx, int sy, int ex, int ey) {
 		JSONObeject["Event"] = Json::Value("deselectRT");
 		Json::Value tmp;
 		tmp["sx"] = Json::Value(sx);
@@ -150,7 +150,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& deselect(int x, int y) {
+	Array2DTracer& _deselect(int x, int y) {
 		JSONObeject["Event"] = Json::Value("deselect");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -160,7 +160,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& deselectRow(int x, int sy, int ey) {
+	Array2DTracer& _deselectRow(int x, int sy, int ey) {
 		JSONObeject["Event"] = Json::Value("deselectRow");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -171,7 +171,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& deselectCol(int y, int sx, int ex) {
+	Array2DTracer& _deselectCol(int y, int sx, int ex) {
 		JSONObeject["Event"] = Json::Value("deselectCol");
 		Json::Value tmp;
 		tmp["y"] = Json::Value(y);
@@ -182,7 +182,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& separate(int x, int y) {
+	Array2DTracer& _separate(int x, int y) {
 		JSONObeject["Event"] = Json::Value("separate");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -192,7 +192,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& separateRow(int x) {
+	Array2DTracer& _separateRow(int x) {
 		JSONObeject["Event"] = Json::Value("separateRow");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -201,7 +201,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& separateCol(int y) {
+	Array2DTracer& _separateCol(int y) {
 		JSONObeject["Event"] = Json::Value("separateCol");
 		Json::Value tmp;
 		tmp["y"] = Json::Value(y);
@@ -210,7 +210,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& deseparate(int x, int y) {
+	Array2DTracer& _deseparate(int x, int y) {
 		JSONObeject["Event"] = Json::Value("deseparate");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -220,7 +220,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& deseparateRow(int x) {
+	Array2DTracer& _deseparateRow(int x) {
 		JSONObeject["Event"] = Json::Value("deseparateRow");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -229,7 +229,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& deseparateCol(int y) {
+	Array2DTracer& _deseparateCol(int y) {
 		JSONObeject["Event"] = Json::Value("deseparateCol");
 		Json::Value tmp;
 		tmp["y"] = Json::Value(y);
@@ -238,7 +238,7 @@ public:
 		return *this;
 	}
 
-	Array2DTracer& wait(int line) {
+	Array2DTracer& _wait(int line) {
 		JSONObeject["Event"] = Json::Value("wait");
 		Json::Value tmp;
 		tmp["line"] = Json::Value(line);
@@ -247,7 +247,7 @@ public:
 		return *this;
 	}
 
-    Array2DTracer& clear() {
+    Array2DTracer& _clear() {
 		JSONObeject["Event"] = Json::Value("clear");
 		Json::Value tmp;
 		tmp.resize(0);
@@ -256,7 +256,7 @@ public:
 		return *this;
 	}
 
-    Array2DTracer& attach(int id) {
+    Array2DTracer& _attach(int id) {
 		JSONObeject["Event"] = Json::Value("attach");
 		Json::Value tmp;
 		tmp["id"] = Json::Value(id);
@@ -282,18 +282,18 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    Array1DTracer& palette(string selected, string notified, string default) {
+    Array1DTracer& palette(string _selected, string _notified, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
-        tmp.append(Json::Value(selected));
-        tmp.append(Json::Value(notified));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_selected));
+        tmp.append(Json::Value(_notified));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
 	}
 
-	Array1DTracer& setData(int *D, int n) {
+	Array1DTracer& _setData(int *D, int n) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -304,7 +304,7 @@ public:
 		return *this;
 	}
 
-	Array1DTracer& setData(char *D, int n) {
+	Array1DTracer& _setData(char *D, int n) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -315,7 +315,7 @@ public:
 		return *this;
 	}
 
-	Array1DTracer& notify(int x, int v) {
+	Array1DTracer& _notify(int x, int v) {
 		JSONObeject["Event"] = Json::Value("notify");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -325,7 +325,7 @@ public:
 		return *this;
 	}
 
-	Array1DTracer& denotify(int x) {
+	Array1DTracer& _denotify(int x) {
 		JSONObeject["Event"] = Json::Value("denotify");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -335,7 +335,7 @@ public:
 	}
 
 
-	Array1DTracer& select(int s, int e) {
+	Array1DTracer& _select(int s, int e) {
 		JSONObeject["Event"] = Json::Value("selectR");
 		Json::Value tmp;
 		tmp["s"] = Json::Value(s);
@@ -345,7 +345,7 @@ public:
 		return *this;
 	}
 
-	Array1DTracer& select(int x) {
+	Array1DTracer& _select(int x) {
 		JSONObeject["Event"] = Json::Value("select");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -354,7 +354,7 @@ public:
 		return *this;
 	}
 
-	Array1DTracer& deselect(int s, int e) {
+	Array1DTracer& _deselect(int s, int e) {
 		JSONObeject["Event"] = Json::Value("deselectR");
 		Json::Value tmp;
 		tmp["s"] = Json::Value(s);
@@ -364,7 +364,7 @@ public:
 		return *this;
 	}
 
-	Array1DTracer& deselect(int x) {
+	Array1DTracer& _deselect(int x) {
 		JSONObeject["Event"] = Json::Value("deselect");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -374,7 +374,7 @@ public:
 	}
 
 
-	Array1DTracer& separate(int x) {
+	Array1DTracer& _separate(int x) {
 		JSONObeject["Event"] = Json::Value("separate");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -383,7 +383,7 @@ public:
 		return *this;
 	}
 
-	Array1DTracer& deseparate(int x) {
+	Array1DTracer& _deseparate(int x) {
 		JSONObeject["Event"] = Json::Value("deseparate");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -392,7 +392,7 @@ public:
 		return *this;
 	}
 
-	Array1DTracer& wait(int line) {
+	Array1DTracer& _wait(int line) {
 		JSONObeject["Event"] = Json::Value("wait");
 		Json::Value tmp;
 		tmp["line"] = Json::Value(line);
@@ -401,7 +401,7 @@ public:
 		return *this;
 	}
 
-    Array1DTracer& clear() {
+    Array1DTracer& _clear() {
 		JSONObeject["Event"] = Json::Value("clear");
 		Json::Value tmp;
 		tmp.resize(0);
@@ -410,7 +410,7 @@ public:
 		return *this;
 	}
 
-    Array1DTracer& attach(int id) {
+    Array1DTracer& _attach(int id) {
 		JSONObeject["Event"] = Json::Value("attach");
 		Json::Value tmp;
 		tmp["id"] = Json::Value(id);
@@ -435,7 +435,7 @@ public:
         mylist.append(Json::Value(JSONObeject));
     }
 
-    LogTracer& print(string info) {
+    LogTracer& _print(string info) {
 		JSONObeject["Event"] = Json::Value("print");
 		Json::Value tmp;
 		tmp["info"] = Json::Value(info);
@@ -444,7 +444,7 @@ public:
 		return *this;
 	}
 
-	LogTracer& print(char *info, int n) {
+	LogTracer& _print(char *info, int n) {
 		JSONObeject["Event"] = Json::Value("print");
 		Json::Value tmp;
 		string s = "";
@@ -455,7 +455,7 @@ public:
 		return *this;
 	}
 
-	LogTracer& wait(int line) {
+	LogTracer& _wait(int line) {
 		JSONObeject["Event"] = Json::Value("wait");
 		Json::Value tmp;
 		tmp["line"] = Json::Value(line);
@@ -464,7 +464,7 @@ public:
 		return *this;
 	}
 
-    LogTracer& clear() {
+    LogTracer& _clear() {
 		JSONObeject["Event"] = Json::Value("clear");
 		Json::Value tmp;
 		tmp.resize(0);
@@ -489,18 +489,18 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    ChartTracer& palette(string selected, string notified, string default) {
+    ChartTracer& palette(string _selected, string _notified, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
-        tmp.append(Json::Value(selected));
-        tmp.append(Json::Value(notified));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_selected));
+        tmp.append(Json::Value(_notified));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
 	}
 
-	ChartTracer& setData(int *D, int n) {
+	ChartTracer& _setData(int *D, int n) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -511,7 +511,7 @@ public:
 		return *this;
 	}
 
-	ChartTracer& setData(char *D, int n) {
+	ChartTracer& _setData(char *D, int n) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -522,7 +522,7 @@ public:
 		return *this;
 	}
 
-	ChartTracer& notify(int x, int v) {
+	ChartTracer& _notify(int x, int v) {
 		JSONObeject["Event"] = Json::Value("notify");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -532,7 +532,7 @@ public:
 		return *this;
 	}
 
-	ChartTracer& denotify(int x) {
+	ChartTracer& _denotify(int x) {
 		JSONObeject["Event"] = Json::Value("denotify");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -542,7 +542,7 @@ public:
 	}
 
 
-	ChartTracer& select(int s, int e) {
+	ChartTracer& _select(int s, int e) {
 		JSONObeject["Event"] = Json::Value("selectR");
 		Json::Value tmp;
 		tmp["s"] = Json::Value(s);
@@ -552,7 +552,7 @@ public:
 		return *this;
 	}
 
-	ChartTracer& select(int x) {
+	ChartTracer& _select(int x) {
 		JSONObeject["Event"] = Json::Value("select");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -561,7 +561,7 @@ public:
 		return *this;
 	}
 
-	ChartTracer& deselect(int s, int e) {
+	ChartTracer& _deselect(int s, int e) {
 		JSONObeject["Event"] = Json::Value("deselectR");
 		Json::Value tmp;
 		tmp["s"] = Json::Value(s);
@@ -571,7 +571,7 @@ public:
 		return *this;
 	}
 
-	ChartTracer& deselect(int x) {
+	ChartTracer& _deselect(int x) {
 		JSONObeject["Event"] = Json::Value("deselect");
 		Json::Value tmp;
 		tmp["x"] = Json::Value(x);
@@ -580,7 +580,7 @@ public:
 		return *this;
 	}
 
-	ChartTracer& wait(int line) {
+	ChartTracer& _wait(int line) {
 		JSONObeject["Event"] = Json::Value("wait");
 		Json::Value tmp;
 		tmp["line"] = Json::Value(line);
@@ -589,7 +589,7 @@ public:
 		return *this;
 	}
 
-    ChartTracer& clear() {
+    ChartTracer& _clear() {
 		JSONObeject["Event"] = Json::Value("clear");
 		Json::Value tmp;
 		tmp.resize(0);
@@ -613,18 +613,18 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    DirectedGraphTracer& palette(string visit, string left, string default) {
+    DirectedGraphTracer& palette(string _visit, string _left, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
-        tmp.append(Json::Value(visit));
-        tmp.append(Json::Value(left));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_visit));
+        tmp.append(Json::Value(_left));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
 	}
 
-	DirectedGraphTracer& setData(int *D, int len, int n, int m) {
+	DirectedGraphTracer& _setData(int *D, int len, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -637,7 +637,7 @@ public:
 		return *this;
 	}
 
-	DirectedGraphTracer& setTreeData(int *D, int n, int m, int root) {
+	DirectedGraphTracer& _setTreeData(int *D, int n, int m, int root) {
 		JSONObeject["Event"] = Json::Value("setTreeData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -652,7 +652,7 @@ public:
 	}
 
 
-	DirectedGraphTracer& visit(int t, int s) {
+	DirectedGraphTracer& _visit(int t, int s) {
 		JSONObeject["Event"] = Json::Value("visit");
 		Json::Value tmp;
 		tmp["t"] = Json::Value(t);
@@ -662,7 +662,7 @@ public:
 		return *this;
 	}
 
-	DirectedGraphTracer& leave(int t, int s) {
+	DirectedGraphTracer& _leave(int t, int s) {
 		JSONObeject["Event"] = Json::Value("leave");
 		Json::Value tmp;
 		tmp["t"] = Json::Value(t);
@@ -672,7 +672,7 @@ public:
 		return *this;
 	}
 
-	DirectedGraphTracer& wait(int line) {
+	DirectedGraphTracer& _wait(int line) {
 		JSONObeject["Event"] = Json::Value("wait");
 		Json::Value tmp;
 		tmp["line"] = Json::Value(line);
@@ -681,7 +681,7 @@ public:
 		return *this;
 	}
 
-    DirectedGraphTracer& clear() {
+    DirectedGraphTracer& _clear() {
 		JSONObeject["Event"] = Json::Value("clear");
 		Json::Value tmp;
 		tmp.resize(0);
@@ -690,7 +690,7 @@ public:
 		return *this;
 	}
 
-	DirectedGraphTracer& attach(int id) {
+	DirectedGraphTracer& _attach(int id) {
 		JSONObeject["Event"] = Json::Value("attach");
 		Json::Value tmp;
 		tmp["id"] = Json::Value(id);
@@ -715,18 +715,18 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    UndirectedGraphTracer& palette(string visit, string left, string default) {
+    UndirectedGraphTracer& palette(string _visit, string _left, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
-        tmp.append(Json::Value(visit));
-        tmp.append(Json::Value(left));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_visit));
+        tmp.append(Json::Value(_left));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
 	}
 
-	UndirectedGraphTracer& setData(int *D, int len, int n, int m) {
+	UndirectedGraphTracer& _setData(int *D, int len, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -739,7 +739,7 @@ public:
 		return *this;
 	}
 
-	UndirectedGraphTracer& setTreeData(int *D, int n, int m) {
+	UndirectedGraphTracer& _setTreeData(int *D, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setTreeData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -753,7 +753,7 @@ public:
 	}
 
 
-	UndirectedGraphTracer& visit(int t, int s) {
+	UndirectedGraphTracer& _visit(int t, int s) {
 		JSONObeject["Event"] = Json::Value("visit");
 		Json::Value tmp;
 		tmp["t"] = Json::Value(t);
@@ -763,7 +763,7 @@ public:
 		return *this;
 	}
 
-	UndirectedGraphTracer& leave(int t, int s) {
+	UndirectedGraphTracer& _leave(int t, int s) {
 		JSONObeject["Event"] = Json::Value("leave");
 		Json::Value tmp;
 		tmp["t"] = Json::Value(t);
@@ -773,7 +773,7 @@ public:
 		return *this;
 	}
 
-	UndirectedGraphTracer& wait(int line) {
+	UndirectedGraphTracer& _wait(int line) {
 		JSONObeject["Event"] = Json::Value("wait");
 		Json::Value tmp;
 		tmp["line"] = Json::Value(line);
@@ -782,7 +782,7 @@ public:
 		return *this;
 	}
 
-    UndirectedGraphTracer& clear() {
+    UndirectedGraphTracer& _clear() {
 		JSONObeject["Event"] = Json::Value("clear");
 		Json::Value tmp;
 		tmp.resize(0);
@@ -791,7 +791,7 @@ public:
 		return *this;
 	}
 
-	UndirectedGraphTracer& attach(int id) {
+	UndirectedGraphTracer& _attach(int id) {
 		JSONObeject["Event"] = Json::Value("attach");
 		Json::Value tmp;
 		tmp["id"] = Json::Value(id);
@@ -815,18 +815,18 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    WeightedDirectedGraphTracer& palette(string visit, string left, string default) {
+    WeightedDirectedGraphTracer& palette(string _visit, string _left, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
-        tmp.append(Json::Value(visit));
-        tmp.append(Json::Value(left));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_visit));
+        tmp.append(Json::Value(_left));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
 	}
 
-	WeightedDirectedGraphTracer& setData(int *D, int len, int n, int m) {
+	WeightedDirectedGraphTracer& _setData(int *D, int len, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -839,7 +839,7 @@ public:
 		return *this;
 	}
 
-	WeightedDirectedGraphTracer& setTreeData(int *D, int n, int m) {
+	WeightedDirectedGraphTracer& _setTreeData(int *D, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setTreeData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -852,7 +852,7 @@ public:
 		return *this;
 	}
 
-    WeightedDirectedGraphTracer& weight(int t, int w) {
+    WeightedDirectedGraphTracer& _weight(int t, int w) {
 		JSONObeject["Event"] = Json::Value("weight");
 		Json::Value tmp;
 		tmp["t"] = Json::Value(t);
@@ -862,7 +862,7 @@ public:
 		return *this;
 	}
 
-	WeightedDirectedGraphTracer& visit(int t, int s, int w) {
+	WeightedDirectedGraphTracer& _visit(int t, int s, int w) {
 		JSONObeject["Event"] = Json::Value("visit");
 		Json::Value tmp;
 		tmp["t"] = Json::Value(t);
@@ -873,7 +873,7 @@ public:
 		return *this;
 	}
 
-	WeightedDirectedGraphTracer& leave(int t, int s, int w) {
+	WeightedDirectedGraphTracer& _leave(int t, int s, int w) {
 		JSONObeject["Event"] = Json::Value("leave");
 		Json::Value tmp;
 		tmp["t"] = Json::Value(t);
@@ -884,7 +884,7 @@ public:
 		return *this;
 	}
 
-	WeightedDirectedGraphTracer& wait(int line) {
+	WeightedDirectedGraphTracer& _wait(int line) {
 		JSONObeject["Event"] = Json::Value("wait");
 		Json::Value tmp;
 		tmp["line"] = Json::Value(line);
@@ -893,7 +893,7 @@ public:
 		return *this;
 	}
 
-    WeightedDirectedGraphTracer& clear() {
+    WeightedDirectedGraphTracer& _clear() {
 		JSONObeject["Event"] = Json::Value("clear");
 		Json::Value tmp;
 		tmp.resize(0);
@@ -902,7 +902,7 @@ public:
 		return *this;
 	}
 
-	WeightedDirectedGraphTracer& attach(int id) {
+	WeightedDirectedGraphTracer& _attach(int id) {
 		JSONObeject["Event"] = Json::Value("attach");
 		Json::Value tmp;
 		tmp["id"] = Json::Value(id);
@@ -926,18 +926,18 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    WeightedUndirectedGraphTracer& palette(string visit, string left, string default) {
+    WeightedUndirectedGraphTracer& palette(string _visit, string _left, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
-        tmp.append(Json::Value(visit));
-        tmp.append(Json::Value(left));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_visit));
+        tmp.append(Json::Value(_left));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
 	}
 
-	WeightedUndirectedGraphTracer& setData(int *D, int len, int n, int m) {
+	WeightedUndirectedGraphTracer& _setData(int *D, int len, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -950,7 +950,7 @@ public:
 		return *this;
 	}
 
-	WeightedUndirectedGraphTracer& setTreeData(int *D, int n, int m) {
+	WeightedUndirectedGraphTracer& _setTreeData(int *D, int n, int m) {
 		JSONObeject["Event"] = Json::Value("setTreeData");
 		Json::Value tmp;
 		for(int i = 0; i < n; i++) {
@@ -963,7 +963,7 @@ public:
 		return *this;
 	}
 
-    WeightedUndirectedGraphTracer& weight(int t, int w) {
+    WeightedUndirectedGraphTracer& _weight(int t, int w) {
 		JSONObeject["Event"] = Json::Value("weight");
 		Json::Value tmp;
 		tmp["t"] = Json::Value(t);
@@ -973,7 +973,7 @@ public:
 		return *this;
 	}
 
-	WeightedUndirectedGraphTracer& visit(int t, int s, int w) {
+	WeightedUndirectedGraphTracer& _visit(int t, int s, int w) {
 		JSONObeject["Event"] = Json::Value("visit");
 		Json::Value tmp;
 		tmp["t"] = Json::Value(t);
@@ -984,7 +984,7 @@ public:
 		return *this;
 	}
 
-	WeightedUndirectedGraphTracer& leave(int t, int s, int w) {
+	WeightedUndirectedGraphTracer& _leave(int t, int s, int w) {
 		JSONObeject["Event"] = Json::Value("leave");
 		Json::Value tmp;
 		tmp["t"] = Json::Value(t);
@@ -995,7 +995,7 @@ public:
 		return *this;
 	}
 
-	WeightedUndirectedGraphTracer& wait(int line) {
+	WeightedUndirectedGraphTracer& _wait(int line) {
 		JSONObeject["Event"] = Json::Value("wait");
 		Json::Value tmp;
 		tmp["line"] = Json::Value(line);
@@ -1004,7 +1004,7 @@ public:
 		return *this;
 	}
 
-    WeightedUndirectedGraphTracer& clear() {
+    WeightedUndirectedGraphTracer& _clear() {
 		JSONObeject["Event"] = Json::Value("clear");
 		Json::Value tmp;
 		tmp.resize(0);
@@ -1013,7 +1013,7 @@ public:
 		return *this;
 	}
 
-	WeightedUndirectedGraphTracer& attach(int id) {
+	WeightedUndirectedGraphTracer& _attach(int id) {
 		JSONObeject["Event"] = Json::Value("attach");
 		Json::Value tmp;
 		tmp["id"] = Json::Value(id);
