@@ -36,12 +36,12 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    Array2DTracer& palette(string selected, string notified, string default) {
+    Array2DTracer& palette(string selected, string notified, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
         tmp.append(Json::Value(selected));
         tmp.append(Json::Value(notified));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
@@ -282,12 +282,12 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    Array1DTracer& palette(string selected, string notified, string default) {
+    Array1DTracer& palette(string selected, string notified, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
         tmp.append(Json::Value(selected));
         tmp.append(Json::Value(notified));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
@@ -489,12 +489,12 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    ChartTracer& palette(string selected, string notified, string default) {
+    ChartTracer& palette(string selected, string notified, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
         tmp.append(Json::Value(selected));
         tmp.append(Json::Value(notified));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
@@ -613,12 +613,12 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    DirectedGraphTracer& palette(string visit, string left, string default) {
+    DirectedGraphTracer& palette(string visit, string left, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
         tmp.append(Json::Value(visit));
         tmp.append(Json::Value(left));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
@@ -715,12 +715,12 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    UndirectedGraphTracer& palette(string visit, string left, string default) {
+    UndirectedGraphTracer& palette(string visit, string left, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
         tmp.append(Json::Value(visit));
         tmp.append(Json::Value(left));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
@@ -815,12 +815,12 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    WeightedDirectedGraphTracer& palette(string visit, string left, string default) {
+    WeightedDirectedGraphTracer& palette(string visit, string left, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
         tmp.append(Json::Value(visit));
         tmp.append(Json::Value(left));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
@@ -926,12 +926,12 @@ public:
         JSONObeject["Data"] = Json::Value(name);
         mylist.append(Json::Value(JSONObeject));
     }
-    WeightedUndirectedGraphTracer& palette(string visit, string left, string default) {
+    WeightedUndirectedGraphTracer& palette(string visit, string left, string _default) {
         JSONObeject["Event"] = Json::Value("palette");
         Json::Value tmp;
         tmp.append(Json::Value(visit));
         tmp.append(Json::Value(left));
-        tmp.append(Json::Value(default));
+        tmp.append(Json::Value(_default));
         JSONObeject["Data"] = tmp;
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
