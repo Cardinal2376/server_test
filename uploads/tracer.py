@@ -14,10 +14,10 @@ class TracerList(object):
         self.mylist.append(value)
     def info(self):
         #fp = open("sort.txt", "w")
+        print(json.dumps(self.mylist))
         #for var in self.mylist:
-            #fp.write(str(var))
-           # print(var)
-	print(json.dumps(self.mylist))
+        # #fp.write(str(var))
+        # #print(var)
 tracerlist = TracerList()
 
 class Array2DTracer(object):
