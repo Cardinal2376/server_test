@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
 import json
@@ -28,7 +28,10 @@ class Array2DTracer(object):
         self.type = "Array2DTracer"
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "init", "Data": {"name": name}}
         tracerlist.append(JSONObject)
-
+    
+    def getID(self):
+        return self.id
+    
     def palatte(self, obj):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "palette", "Data": {"obj": obj}}
         tracerlist.append(JSONObject)
@@ -136,6 +139,9 @@ class Array1DTracer(object):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "init", "Data": {"name": name}}
         tracerlist.append(JSONObject)
 
+    def getID(self):
+        return self.id
+    
     def palatte(self, obj):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "palette", "Data": {"obj": obj}}
         tracerlist.append(JSONObject)
@@ -206,7 +212,10 @@ class LogTracer(object):
         self.type = "LogTracer"
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "init", "Data": {"name": name}}
         tracerlist.append(JSONObject)
-
+    
+    def getID(self):
+        return self.id
+    
     def Print(self, info):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "print", "Data": {"info": info}}
         tracerlist.append(JSONObject)
@@ -231,7 +240,10 @@ class ChartTracer(object):
         self.type = "ChartTracer"
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "init", "Data": {"name": name}}
         tracerlist.append(JSONObject)
-
+    
+    def getID(self):
+        return self.id
+    
     def palatte(self, obj):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "palette", "Data": {"obj": obj}}
         tracerlist.append(JSONObject)
@@ -288,7 +300,10 @@ class DirectedGraghTracer(object):
         self.type = "DirectedGraphTracer"
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "init", "Data": {"name": name}}
         tracerlist.append(JSONObject)
-
+    
+    def getID(self):
+        return self.id
+    
     def palatte(self, obj):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "palette", "Data": {"obj": obj}}
         tracerlist.append(JSONObject)
@@ -338,6 +353,9 @@ class UnDirectedGraghTracer(object):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "init", "Data": {"name": name}}
         tracerlist.append(JSONObject)
 
+    def getID(self):
+        return self.id
+    
     def palatte(self, obj):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "palette", "Data": {"obj": obj}}
         tracerlist.append(JSONObject)
@@ -386,7 +404,10 @@ class WeightedDirectedGraghTracer(object):
         self.type = "WeightedDirectedGraphTracer"
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "init", "Data": {"name": name}}
         tracerlist.append(JSONObject)
-
+    
+    def getID(self):
+        return self.id
+    
     def palatte(self, obj):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "palette", "Data": {"obj": obj}}
         tracerlist.append(JSONObject)
@@ -440,7 +461,10 @@ class WeightedUnDirectedGraghTracer(object):
         self.type = "WeightedUnDirectedGraphTracer"
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "init", "Data": {"name": name}}
         tracerlist.append(JSONObject)
-
+    
+    def getID(self):
+        return self.id
+    
     def palatte(self, obj):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "palette", "Data": {"obj": obj}}
         tracerlist.append(JSONObject)
@@ -513,9 +537,4 @@ if __name__ == '__main__':
     #for i in range(10):
         #print(A[i])
     tracerlist.info()
-
-#just test git push
-
-
-
 
