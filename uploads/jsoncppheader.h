@@ -777,7 +777,15 @@ public:
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
 	}
-
+  
+  UndirectedGraphTracer& visit(int t) {
+		JSONObeject["Event"] = Json::Value("visit");
+		Json::Value tmp;
+		tmp["t"] = Json::Value(t);
+		JSONObeject["Data"] = tmp;
+		mylist.append(Json::Value(JSONObeject));
+		return *this;
+	}
 	UndirectedGraphTracer& leave(int t, int s) {
 		JSONObeject["Event"] = Json::Value("leave");
 		Json::Value tmp;
@@ -887,7 +895,16 @@ public:
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
 	}
-
+  
+  WeightedDirectedGraphTracer& visit(int t) {
+		JSONObeject["Event"] = Json::Value("visit");
+		Json::Value tmp;
+		tmp["t"] = Json::Value(t);
+		JSONObeject["Data"] = tmp;
+		mylist.append(Json::Value(JSONObeject));
+		return *this;
+	}
+  
 	WeightedDirectedGraphTracer& leave(int t, int s, int w) {
 		JSONObeject["Event"] = Json::Value("leave");
 		Json::Value tmp;
@@ -998,7 +1015,15 @@ public:
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
 	}
-
+  
+  WeightedUndirectedGraphTracer& visit(int t) {
+		JSONObeject["Event"] = Json::Value("visit");
+		Json::Value tmp;
+		tmp["t"] = Json::Value(t);
+		JSONObeject["Data"] = tmp;
+		mylist.append(Json::Value(JSONObeject));
+		return *this;
+	}
 	WeightedUndirectedGraphTracer& leave(int t, int s, int w) {
 		JSONObeject["Event"] = Json::Value("leave");
 		Json::Value tmp;
