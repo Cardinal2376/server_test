@@ -667,6 +667,15 @@ public:
 		mylist.append(Json::Value(JSONObeject));
 		return *this;
 	}
+  
+  DirectedGraphTracer& visit(int t) {
+		JSONObeject["Event"] = Json::Value("visit");
+		Json::Value tmp;
+		tmp["t"] = Json::Value(t);
+		JSONObeject["Data"] = tmp;
+		mylist.append(Json::Value(JSONObeject));
+		return *this;
+	}
 
 	DirectedGraphTracer& leave(int t, int s) {
 		JSONObeject["Event"] = Json::Value("leave");
