@@ -323,9 +323,19 @@ class DirectedGraghTracer(object):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "visit", "Data": {"t": t, "s": s}}
         tracerlist.append(JSONObject)
         return self
+        
+    def visit(self, t):
+        JSONObject = {"ID": self.id, "Type": self.type, "Event": "visit", "Data": {"t": t}}
+        tracerlist.append(JSONObject)
+        return self
 
     def leave(self, t, s):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "leave", "Data": {"t": t, "s": s}}
+        tracerlist.append(JSONObject)
+        return self
+        
+    def leave(self, t):
+        JSONObject = {"ID": self.id, "Type": self.type, "Event": "leave", "Data": {"t": t}}
         tracerlist.append(JSONObject)
         return self
 
@@ -378,6 +388,16 @@ class UnDirectedGraghTracer(object):
 
     def leave(self, t, s):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "leave", "Data": {"t": t, "s": s}}
+        tracerlist.append(JSONObject)
+        return self
+        
+    def visit(self, t):
+        JSONObject = {"ID": self.id, "Type": self.type, "Event": "visit", "Data": {"t": t}}
+        tracerlist.append(JSONObject)
+        return self
+
+    def leave(self, t):
+        JSONObject = {"ID": self.id, "Type": self.type, "Event": "leave", "Data": {"t": t}}
         tracerlist.append(JSONObject)
         return self
 
@@ -437,6 +457,16 @@ class WeightedDirectedGraghTracer(object):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "leave", "Data": {"t": t, "s": s, "w": w}}
         tracerlist.append(JSONObject)
         return self
+        
+    def visit(self, t):
+        JSONObject = {"ID": self.id, "Type": self.type, "Event": "visit", "Data": {"t": t}}
+        tracerlist.append(JSONObject)
+        return self
+
+    def leave(self, t):
+        JSONObject = {"ID": self.id, "Type": self.type, "Event": "leave", "Data": {"t": t}}
+        tracerlist.append(JSONObject)
+        return self
 
     def wait(self, line):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "wait", "Data": {"line": line}}
@@ -494,7 +524,17 @@ class WeightedUnDirectedGraghTracer(object):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "leave", "Data": {"t": t, "s": s, "w": w}}
         tracerlist.append(JSONObject)
         return self
+        
+    def visit(self, t):
+        JSONObject = {"ID": self.id, "Type": self.type, "Event": "visit", "Data": {"t": t}}
+        tracerlist.append(JSONObject)
+        return self
 
+    def leave(self, t):
+        JSONObject = {"ID": self.id, "Type": self.type, "Event": "leave", "Data": {"t": t}}
+        tracerlist.append(JSONObject)
+        return self
+        
     def wait(self, line):
         JSONObject = {"ID": self.id, "Type": self.type, "Event": "wait", "Data": {"line": line}}
         tracerlist.append(JSONObject)
